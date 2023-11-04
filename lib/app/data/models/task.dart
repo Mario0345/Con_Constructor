@@ -50,3 +50,5 @@ class Task extends Equatable{
 
   
   }
+
+  //TODO redo with freezed
