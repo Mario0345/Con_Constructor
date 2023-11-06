@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_constructor/app/data/services/storage/respository.dart';
@@ -13,6 +14,8 @@ class HomeController extends GetxController {
   final chipIndex = 0.obs;
   final deleting = false.obs;
   final task = Rx<Task?>(null);
+  final creatingTodos = <dynamic>[].obs;
+  final createdTodos = <dynamic>[].obs;
   // final count = 0.obs;
 
   @override
@@ -75,5 +78,56 @@ class HomeController extends GetxController {
   bool containeTodo(List todos, String title) {
     return todos.any((elem) => elem['title'] == title);
   }
-  // void increment() => count.value++;
+
+  void changeTodos(List<dynamic> select){
+    creatingTodos.clear();
+    createdTodos.clear();
+    for (var i = 0; i < select.length; i++) {
+      var todo = select[i];
+      var status = todo['done'];
+      if(status == true){
+        createdTodos.add(todo);
+      }
+      else{
+        creatingTodos.add(todo);
+      }
+    }
+    
+  }
+
+  bool addTodo(String title){
+    var todo = {'title': title, 'done': false};
+    if(creatingTodos.any((elem) => mapEquals<String, dynamic>(todo, elem))){
+      return false;
+    }
+    var todo2 = {'title': title, 'done': true};
+    if(createdTodos.any((elem) => mapEquals<String,dynamic>(todo2, elem))){
+      return false;
+    }
+    creatingTodos.add(todo);
+    return true; 
+  }
+
+  void updateTodos(){
+    var newTodos =<Map<String,dynamic>>[];
+    newTodos.addAll([
+      ...creatingTodos,
+      ...createdTodos,]
+    );
+    var newTask = task.value!.copyWith(todos: newTodos);
+    int oldIdx = tasks.indexOf(task.value);
+    tasks[oldIdx] = newTask;
+    tasks.refresh();
+  }
+  
+  void createdTodo(String title){
+    var creatingTodo = {'title': title, 'done': false};
+    int index = creatingTodos.indexWhere((elem) => mapEquals<String, dynamic>(creatingTodo, elem));
+    creatingTodos.removeAt(index);
+    var createdTodo = {'title': title, 'done': true};
+    createdTodos.add(createdTodo);
+    creatingTodos.refresh();
+    createdTodos.refresh();
+  }
+  
 }
