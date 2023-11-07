@@ -15,7 +15,7 @@ class HomeController extends GetxController {
   final deleting = false.obs;
   final task = Rx<Task?>(null);
   final creatingTodos = <dynamic>[].obs;
-  final createdTodos = <dynamic>[].obs;
+  final createdTodos = <dynamic>[].obs; //TODO выделить функционал для task_controller в отдельный уже созданный файл
   // final count = 0.obs;
 
   @override
@@ -129,5 +129,26 @@ class HomeController extends GetxController {
     creatingTodos.refresh();
     createdTodos.refresh();
   }
+
+  void deleteCreatedTodo(dynamic createdTodo) {
+    int index = createdTodos.indexWhere((elem) => mapEquals<String, dynamic>(createdTodo, elem));
+    createdTodos.removeAt(index);
+    createdTodos.refresh();
+  }
   
+  bool isTodosEmpty(Task task){
+    return task.todos == null || task.todos!.isEmpty;
+  }
+
+  int getCreatedTodo(Task task){
+    var res = 0;
+    for (var i = 0; i < task.todos!.length; i++) {
+      if(task.todos![i]['done'] == true){
+        res += 1;
+
+      }
+    }
+    return res;
+  }
+
 }

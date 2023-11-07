@@ -7,6 +7,7 @@ import 'package:project_constructor/app/modules/home/controllers/home_controller
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 import '../controllers/task_list_controller.dart';
+import '../widgets/created_list.dart';
 import '../widgets/creating_list.dart';
 
 class TaskListView extends GetView<TaskListController> {
@@ -145,6 +146,7 @@ class TaskListView extends GetView<TaskListController> {
               ),
             ),
             CreatingList(),
+            CreatedList(),
           ],
         ),
       ),

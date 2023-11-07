@@ -13,12 +13,15 @@ class CreatingList extends StatelessWidget {
       () => homeCtrl.creatingTodos.isEmpty && homeCtrl.createdTodos.isEmpty
           ? Column(
               children: [
+                const SizedBox(
+                  height: 40,
+                ),
                 Image.asset(
                   'assets/images/img.png',
-                  fit: BoxFit.cover,
-                  width: 65.0.wp,
+                  fit: BoxFit.none,
+                  // width: 35.0.wp,
                 ),
-                Text('Add task/con',
+                Text('Add task',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16.0.sp,
