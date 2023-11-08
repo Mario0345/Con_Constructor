@@ -31,6 +31,7 @@ class TaskListView extends GetView<TaskListController> {
               child: Row(
                 children: [
                   IconButton(
+                    splashRadius: 30,
                     onPressed: () {
                       Get.back();
                       homeCtrl.updateTodos();

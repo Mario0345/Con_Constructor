@@ -117,7 +117,7 @@ AddCard({ Key? key }) : super(key: key);
           child: Center(
             child: Icon(Icons.add,
               size: 10.0.wp,
-              color: Colors.cyanAccent,
+              color: Colors.orange[400],
           ),
         )
         )

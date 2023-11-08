@@ -15,7 +15,9 @@ class HomeController extends GetxController {
   final deleting = false.obs;
   final task = Rx<Task?>(null);
   final creatingTodos = <dynamic>[].obs;
-  final createdTodos = <dynamic>[].obs; //TODO выделить функционал для task_controller в отдельный уже созданный файл
+  final createdTodos = <dynamic>[].obs; 
+  //TODO выделить функционал для task_controller в отдельный уже созданный файл
+  //TODO выделить функционал для report_controller в отдельный уже созданный файл
   // final count = 0.obs;
 
   @override
@@ -148,6 +150,35 @@ class HomeController extends GetxController {
 
       }
     }
+    return res;
+  }
+
+  int getTotalTasks(){
+    var res = 0;
+    for (var i = 0; i < tasks.length; i++) {
+      if(tasks[i].todos != null ){
+        res += tasks[i].todos!.length;
+      }
+    }
+    return res;
+  }
+
+
+
+  int getTotalCompletedTasks(){
+    var res = 0;
+
+    for (var i = 0; i < tasks.length; i++) {
+
+      if(tasks[i].todos != null ){
+        for (var j = 0; j < tasks[i].todos!.length; j++) {
+          if(tasks[i].todos![j]['done'] == true){
+            res += 1;
+          }
+        }
+      }
+    }
+
     return res;
   }
 

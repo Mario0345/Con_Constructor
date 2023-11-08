@@ -46,7 +46,7 @@ class CreatingList extends StatelessWidget {
                               height: 20,
                               child: Checkbox(
                                 fillColor: MaterialStateProperty.resolveWith(
-                                    (states) => Colors.grey),
+                                    (states) => Colors.white),
                                 value: elem['done'],
                                 onChanged: (value) {
                                   homeCtrl.createdTodo(elem['title']);
