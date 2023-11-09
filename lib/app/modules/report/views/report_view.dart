@@ -42,9 +42,9 @@ class ReportView extends GetView<HomeController> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _buildStatus(Colors.green, liveTasks, 'Live tasks'),
-                   _buildStatus(Colors.orange, completedTasks, 'Completed'),
-                   _buildStatus(Colors.blue, createdTasks, 'Created'),
+                  _buildStatus(Colors.green, liveTasks, 'Текущие'),
+                   _buildStatus(Colors.orange, completedTasks, 'Завершены'),
+                   _buildStatus(Colors.blue, createdTasks, 'Всего создано'),
                 ],
               ),
             ),

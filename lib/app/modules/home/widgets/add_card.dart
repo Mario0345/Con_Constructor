@@ -26,7 +26,7 @@ AddCard({ Key? key }) : super(key: key);
           await Get.defaultDialog(
             titlePadding: EdgeInsets.symmetric(vertical: 5.0.wp),
             radius: 5,
-            title: "Conference num/ Task type",
+            title: "Группа задания",
              content: Form(
               key: homeCtrl.formKey,
               child: Column(
@@ -37,11 +37,11 @@ AddCard({ Key? key }) : super(key: key);
                       controller: homeCtrl.editCtrl,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        labelText: "Title",
+                        labelText: "Заголовок",
                       ), 
                       validator: (value){
                         if(value == null || value.trim().isEmpty){
-                          return "Enter conference / task";
+                          return "Введите заголовок";
                         }
                         return null;
                       },
@@ -91,7 +91,7 @@ AddCard({ Key? key }) : super(key: key);
                         );
                         Get.back();
                         homeCtrl.addTask(task) ?  null: 
-                          EasyLoading.showError("Duplicated task");
+                          EasyLoading.showError("Задание уже существует");
 
                       }
                     },

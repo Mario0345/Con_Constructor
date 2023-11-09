@@ -36,7 +36,7 @@ class AddDialog extends StatelessWidget {
                   onPressed: () {
                     if(homeCtrl.formKey.currentState!.validate()){
                       if(homeCtrl.task.value == null){
-                        EasyLoading.showError("Select type");
+                        EasyLoading.showError("Выберите тип");
                       }
                       else{
                         var success = homeCtrl.updateTask(
@@ -45,19 +45,19 @@ class AddDialog extends StatelessWidget {
                         );
 
                         if(success){
-                          EasyLoading.showSuccess("Added");
+                          EasyLoading.showSuccess("Добавлено");
                           Get.back();
                           homeCtrl.changeTask(null);
                         }
                         else{
-                          EasyLoading.showError("Item already exists");
+                          EasyLoading.showError("Уже существует");
                         }
                         homeCtrl.editCtrl.clear();
                       }
                     }
                   },
                   child: Text(
-                    'Done',
+                    'Готово',
                     style: TextStyle(fontSize: 14.0.sp),
                   ),
                 ),
@@ -67,7 +67,7 @@ class AddDialog extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 5.0.wp),
             child: Text(
-              "New con/task",
+              "Новая задача",
               style: TextStyle(
                 fontSize: 18.0.sp,
                 fontWeight: FontWeight.bold,
@@ -88,7 +88,7 @@ class AddDialog extends StatelessWidget {
                 autofocus: true,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return "Enter your item";
+                    return "Введите предмет";
                   } else {
                     return null;
                   }
@@ -102,7 +102,7 @@ class AddDialog extends StatelessWidget {
               bottom: 2.0.wp,
             ),
             child: Text(
-              "Add to",
+              "Добавить к",
               style: TextStyle(
                 fontSize: 14.0.sp,
                 color: Colors.grey,

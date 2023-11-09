@@ -21,7 +21,7 @@ class CreatingList extends StatelessWidget {
                   fit: BoxFit.none,
                   // width: 35.0.wp,
                 ),
-                Text('Add task',
+                Text('Добавьте задачу',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16.0.sp,

@@ -22,10 +22,6 @@ class TaskListView extends GetView<TaskListController> {
         key: homeCtrl.formKey,
         child: ListView(
           children: [
-            const Text(
-              'TaskListView is working',
-              style: TextStyle(fontSize: 18),
-            ),
             Padding(
               padding: EdgeInsets.all(3.0.wp),
               child: Row(
@@ -78,7 +74,7 @@ class TaskListView extends GetView<TaskListController> {
                 ),
                 child: Row(
                   children: [
-                    Text("${totalTodos} Tasks",
+                    Text("${totalTodos} Задания",
                       style: TextStyle(
                         fontSize: 12.0.sp,
                         color: Colors.grey,
@@ -125,12 +121,12 @@ class TaskListView extends GetView<TaskListController> {
                   suffixIcon: IconButton(
                     onPressed: (){
                       if(homeCtrl.formKey.currentState!.validate()){
-                        var success = homeCtrl.addTodo(homeCtrl.editCtrl.text); //TODO implement this
+                        var success = homeCtrl.addTodo(homeCtrl.editCtrl.text); 
                         if(success){
-                          EasyLoading.showSuccess("Added todo item");
+                          EasyLoading.showSuccess("Задача добавлена");
                         }
                         else{
-                          EasyLoading.showError("Todo item alreasy exists");
+                          EasyLoading.showError("Задача уже существует");
                         }
                         homeCtrl.editCtrl.clear();
                       }
@@ -138,7 +134,7 @@ class TaskListView extends GetView<TaskListController> {
                 ),
                 validator: (value){
                   if(value == null || value.isEmpty){
-                    return 'Enter your todo item';
+                    return 'Введите вашу задачу';
                   }
                   else{
                     return null;

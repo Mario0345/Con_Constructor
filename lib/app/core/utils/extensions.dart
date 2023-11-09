@@ -44,4 +44,3 @@ extension HexColor on Color {
 
 
 
-//TODO расширения для цветов, 1 виде начиная с 11 минуты
